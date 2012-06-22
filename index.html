@@ -1,0 +1,16 @@
+<span id="result"></span>
+
+<script>
+(function() {
+    if(typeof(EventSource)!=="undefined") {
+        console.log('ok');
+        var source=new EventSource("//test_sse.sizkin.c9.io/sse");
+        console.log(source);
+        source.addEventListener('message', function (event) {
+            document.getElementById("result").innerHTML += event.data + "<br />";
+        });
+    } else {
+        document.getElementById("result").innerHTML="Sorry, your browser does not support server-sent events...";
+    }
+})();
+</script>
